@@ -2,6 +2,9 @@
 
 This project showcases real-time communication with SignalR for live location sharing and an efficient infinite scroll user feed, built with Next.js and React Query.
 
+### Live Link
+[https://real-time-location-five.vercel.app](https://real-time-location-five.vercel.app)
+
 ## ✨ Key Features
 
 *   **Real-Time Location Sharing**:
@@ -24,9 +27,29 @@ This project showcases real-time communication with SignalR for live location sh
 *   **Tailwind CSS & Shadcn/ui**
 *   **TypeScript**
 
-## ⚙️ Setup and Installation
+### Installation & Run
 
-1.  **Download the Code**: If you're in v0, click "Download Code".
-2.  **Install Dependencies**:
-    ```bash
-    npm install
+# Clone and Install
+
+``` bash
+git clone https://github.com/Moniruzzaman2525/Real-Time-Location-Sharing.git
+cd Real-Time-Location-Sharing
+npm install
+# or
+npm install -f
+
+```
+
+# Run development server
+``` bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+
+### Build for Production
+
+``` bash
+npm run start
+```

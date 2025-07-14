@@ -12,6 +12,7 @@ import { type User } from "@/types"
 import { UserCardSkeleton } from "@/components/user/UserCardSkeleton"
 import { UserCard } from "@/components/user/UserCard"
 import { VirtualizedUserItem } from "@/components/user/VirtualizedUserItem"
+import Link from "next/link"
 
 const UsersPage = () => {
     const [isOnline, setIsOnline] = useState(true)
@@ -97,6 +98,11 @@ const UsersPage = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 p-4">
             <div className="max-w-4xl mx-auto">
+                <div className="mb-6">
+                    <Link href="/" className="text-green-600 hover:text-green-800">
+                        ← Back to Home
+                    </Link>
+                </div>
                 <Card>
                     <CardHeader>
                         <CardTitle className="flex items-center justify-between">
