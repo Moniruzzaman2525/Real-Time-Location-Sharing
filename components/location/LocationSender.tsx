@@ -7,14 +7,12 @@ import { Label } from "@/components/ui/label"
 import { MapPin, Wifi, WifiOff, Send } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Switch } from "@/components/ui/switch"
 import { useSignalR } from "@/hooks/use-signalr"
 
 const LocationSender = () => {
     const [userName, setUserName] = useState("")
     const [isSharing, setIsSharing] = useState(false)
     const [currentLocation, setCurrentLocation] = useState<{ lat: number; lon: number } | null>(null)
-    const [locationError, setLocationError] = useState<string | null>(null)
 
     const { isConnected, error, sendLocation, connectionState } = useSignalR(
         "https://tech-test.raintor.com/Hub",
@@ -29,7 +27,6 @@ const LocationSender = () => {
                             const { latitude, longitude } = position.coords
                             setCurrentLocation({ lat: latitude, lon: longitude })
                             sendLocation(latitude, longitude, userName)
-                            setLocationError(null)
                         },
                         (error) => {
                             console.warn("GPS failed, using simulated location:", error)
@@ -37,7 +34,6 @@ const LocationSender = () => {
                             const simulatedLon = 90.3644747 + (Math.random() - 0.5) * 0.01
                             setCurrentLocation({ lat: simulatedLat, lon: simulatedLon })
                             sendLocation(simulatedLat, simulatedLon, userName)
-                            setLocationError("Using simulated location (GPS unavailable)")
                         },
                         { enableHighAccuracy: true, timeout: 5000, maximumAge: 1000 },
                     )
@@ -46,7 +42,6 @@ const LocationSender = () => {
                     const simulatedLon = 90.3644747 + (Math.random() - 0.5) * 0.01
                     setCurrentLocation({ lat: simulatedLat, lon: simulatedLon })
                     sendLocation(simulatedLat, simulatedLon, userName)
-                    setLocationError("Using simulated location (Geolocation not supported)")
                 }
             }, 2000)
 
@@ -63,7 +58,6 @@ const LocationSender = () => {
     const handleStopSharing = () => {
         setIsSharing(false)
         setCurrentLocation(null)
-        setLocationError(null)
     }
 
     return (
